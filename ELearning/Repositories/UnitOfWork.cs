@@ -1,19 +1,21 @@
-﻿using ELearning.Database;
-using ELearning.Interfaces.Repositories;
+﻿using ELearning.Interfaces.Repositories;
+using ELearning.Models;
 
 namespace ELearning.Repositories;
 public class UnitOfWork : IUnitOfWork
 {
-    private readonly ELearningDbContext _context;
+    private readonly AspireContext _context;
     private IStudentRepository _StudentRepository;
+    private IGradeRepository _GradeRepository;
 
-    public UnitOfWork(ELearningDbContext context)
+    public UnitOfWork(AspireContext context)
     {
         _context = context;
     }
 
 
     public IStudentRepository StudentRepository => _StudentRepository ??= new StudentRepository(_context);
+    public IGradeRepository GradeRepository => _GradeRepository ??= new GradeRepository(_context);
 
 
 

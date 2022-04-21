@@ -1,21 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
-namespace ELearning.Models;
-public class Student
+namespace ELearning.Models
 {
-    
-    public long Id { get; set; }
+    public partial class Student
+    {
+        public long StudentId { get; set; }
+        public string? StudentNameEn { get; set; }
+        public string? StudentNameAr { get; set; }
+        public DateTime? Birthdate { get; set; }
+        public long? GradeId { get; set; }
 
-    [Required(ErrorMessage = "First name is required")]
-    public string FristName { get; set; } = string.Empty;
-
-    [Required(ErrorMessage = "Last name is required")]
-    public string LastName { get; set; } = string.Empty;
-
-    [Required(ErrorMessage = "Age is required")]
-    [Range(1, 90)]
-    public int Age { get; set; } = 0;
-    public DateTime CreationDate { get; set; }
-    public DateTime UpdatedDate { get; set; }
+        public virtual Grade? Grade { get; set; }
+    }
 }
-
