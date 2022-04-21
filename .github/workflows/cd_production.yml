@@ -21,3 +21,11 @@ jobs:
       run: dotnet build -c Release --no-restore
     - name: Run automated tests
       run: dotnet test -c Release --no-build --verbosity normal
+    # - name: Publish app
+    #   run: dotnet publish -c Release -o ./output
+    # - name: Deploy to Azure Web App
+    #   uses: azure/webapps-deploy@v2
+    #   with:
+    #     app-name: app_name_in_azure
+    #     publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_SECRET}}
+    #     package: ./output
