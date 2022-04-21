@@ -2,8 +2,8 @@
 
 Configure Database using (Database First) has two cases
 
->> case 1 - configure the database in first time when create new project.
->> case 2 - update your code (models classes) if the database already configured before and the database had some changes.
+* case 1 - configure the database in first time when create new project.
+* case 2 - update your code (models classes) if the database already configured before and the database had some changes.
 
 ## Case 1 - Configure database first time
 
