@@ -11,12 +11,12 @@ namespace ELearning.Controllers
     {
         
         private readonly IStudentService _studentService;
-        private readonly ILogger<StudentsController> _logger;
+        //private readonly ILogger<StudentsController> _logger;
 
-        public StudentsController(IStudentService studentService, ILogger<StudentsController> logger)
+        public StudentsController(IStudentService studentService)//, ILogger<StudentsController> logger)
         {
             _studentService = studentService;
-            _logger = logger;
+           // _logger = logger;
         }
 
         [HttpGet]

@@ -11,12 +11,12 @@ namespace ELearning.Controllers
     {
 
         private readonly IGradeService _gradeService;
-        private readonly ILogger<GradesController> _logger;
+        //private readonly ILogger<GradesController> _logger;
 
-        public GradesController(IGradeService gradeService, ILogger<GradesController> logger)
+        public GradesController(IGradeService gradeService)//, ILogger<GradesController> logger)
         {
             _gradeService = gradeService;
-            _logger = logger;
+            //_logger = logger;
         }
 
         [HttpGet]
