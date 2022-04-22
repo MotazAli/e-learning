@@ -1,6 +1,8 @@
+using Azure.Storage.Blobs;
 using ELearning.Interfaces.Repositories;
 using ELearning.Interfaces.Services;
 using ELearning.Models;
+using ELearning.Providers.Payments;
 using ELearning.Repositories;
 using ELearning.Services;
 using Microsoft.EntityFrameworkCore;
@@ -40,9 +42,17 @@ app.Run();
 
 void ConfigureServices(IServiceCollection services, ConfigurationManager configuration)
 {
+    ConfigureProviders(services, configuration);
+    AddDependancyInjectionServices(services);
+}
+
+void ConfigureProviders(IServiceCollection services, ConfigurationManager configuration)
+{
     services.AddDbContext<AspireContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("ELearningDB")));
-    AddDependancyInjectionServices(services);
+
+    //services.AddSingleton(s => new StripeService(configuration.GetValue<string>("StripeSecretKey")));
+    services.AddSingleton(s => new BlobServiceClient(configuration.GetValue<string>("AzureStorageConnectionString")));
 }
 
 
@@ -51,4 +61,5 @@ void AddDependancyInjectionServices(IServiceCollection services)
     services.AddTransient<IUnitOfWork, UnitOfWork>();
     services.AddTransient<IStudentService, StudentService>();
     services.AddTransient<IGradeService, GradeService>();
+    services.AddTransient<IStorageService, AzureStorageService>();
 }
